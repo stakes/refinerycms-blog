@@ -41,4 +41,11 @@ module BlogPostsHelper
   def next_or_previous?(post)
     post.next.present? or post.prev.present?
   end
+  
+  def post_author(post, options={})
+    html = post.user.login
+    html = options[:prefix] + ' ' + html if !options[:prefix].blank?
+    html = content_tag(options[:tag], html) if !options[:tag].blank?
+    html.html_safe
+  end
 end
