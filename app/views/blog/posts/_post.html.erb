@@ -5,7 +5,7 @@
 <% end %>
 <article id="blog_post">
   <header>
-    <h1><%= @blog_post.title %></h1>
+    <h1><%= @blog_post.title %></h1><%= post_author(@blog_post, :prefix => 'Posted by', :tag => 'h5') %>
     <details>
       <time datetime="<%=l @blog_post.published_at.to_date, :format => :default %>" class='posted_at'>
         <%= t('blog.shared.posts.created_at', :when => l(@blog_post.published_at.to_date, :format => :short)) %>.
