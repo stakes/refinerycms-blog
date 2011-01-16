@@ -15,8 +15,7 @@ protected
     @blog_categories = BlogCategory.find(:all)
   end
   
-  
   def set_author
-    params[:blog_post][:user_id] = current_user.id
+    params[:blog_post][:user_id] = current_user.id unless current_user.blank?
   end
 end
