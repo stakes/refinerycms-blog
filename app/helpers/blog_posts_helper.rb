@@ -43,9 +43,11 @@ module BlogPostsHelper
   end
   
   def post_author(post, options={})
-    html = post.user.login
-    html = options[:prefix] + ' ' + html if !options[:prefix].blank?
-    html = content_tag(options[:tag], html) if !options[:tag].blank?
-    html.html_safe
+    if !post.user.blank?
+      html = post.user.login
+      html = options[:prefix] + ' ' + html if !options[:prefix].blank?
+      html = content_tag(options[:tag], html) if !options[:tag].blank?
+      html.html_safe
+    end
   end
 end
